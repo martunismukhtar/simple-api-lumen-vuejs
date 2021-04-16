@@ -89,7 +89,7 @@ export default {
 		validateCode(e) {
 			let char = String.fromCharCode(e.keyCode); 
 			this.hasresult = false;
-			if (/^([a-zA-Z0-9]+)$/.test(char)) {
+			if (/^([A-Z0-9]+)$/.test(char)) {
 				return true;
 			}
 			else e.preventDefault();
@@ -97,7 +97,14 @@ export default {
 		},
 		validateLength(e){
 			if (e.target.value.length == 6) {
-				this.btndisabled = false;
+				let char = e.target.value; 
+				if (/^([a-zA-Z0-9]+)$/.test(char)) {
+					// return true;
+					this.btndisabled = false;
+				} else {
+					this.btndisabled = true;	
+				}	
+				
 			} else {
 				this.btndisabled = true;
 			}
